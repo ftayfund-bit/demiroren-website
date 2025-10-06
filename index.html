@@ -1,1 +1,652 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demirøren Nordic Capital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.4rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #1a1a1a;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #f5f5f5;
+            padding: 10rem 2rem 4rem 2rem;
+            padding-top: 150px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding-top: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+            line-height: 1.3;
+            padding-top: 1rem;
+        }
+
+        .hero .tagline {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #666;
+            font-weight: 300;
+        }
+
+        /* Sections */
+        section {
+            padding: 8rem 4rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+
+        .section-intro {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #444;
+            max-width: 900px;
+            margin-bottom: 4rem;
+            font-weight: 300;
+        }
+
+        /* About Section */
+        #about {
+            background: white;
+        }
+
+        .mission-statement {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem;
+            margin: 4rem 0;
+            font-size: 1.5rem;
+            line-height: 1.8;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .heritage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .heritage-item {
+            padding: 2rem 0;
+            border-top: 1px solid #ddd;
+        }
+
+        .heritage-item h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .heritage-item p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            background: #f5f5f5;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            padding: 3rem;
+            transition: all 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .portfolio-item h3 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .portfolio-item .subtitle {
+            font-size: 0.9rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-item p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .portfolio-link {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #1a1a1a;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-link:hover {
+            opacity: 0.6;
+        }
+
+        /* Leadership Section */
+        #leadership {
+            background: white;
+        }
+
+        .leadership-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 5rem;
+            margin-top: 3rem;
+        }
+
+        .leader-profile {
+            padding-right: 2rem;
+        }
+
+        .leader-profile h3 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-profile .title {
+            font-size: 1rem;
+            color: #999;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .leader-bio {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #444;
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .value-item {
+            padding: 2rem 0;
+            border-top: 1px solid #ddd;
+        }
+
+        .value-item h4 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .value-item p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        #contact h2 {
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 5rem;
+            margin-top: 3rem;
+        }
+
+        .contact-details {
+            padding-right: 2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item .label {
+            font-size: 0.85rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item .value {
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        .contact-message {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: #666;
+            padding: 3rem 4rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav .container,
+            section {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .portfolio-grid,
+            .leadership-content,
+            .contact-grid,
+            .heritage-grid,
+            .values {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 4rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo">DEMIRØREN NORDIC CAPITAL</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Building on Tradition.<br>Forging a New Legacy.</h1>
+            <p class="tagline">A diversified investment platform</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>Our Mission</h2>
+            <p class="section-intro">
+                Founded in 2025 and headquartered in London, Demirøren Nordic Capital represents the convergence of 
+                generational business wisdom and contemporary investment strategy. We are a diversified holding company 
+                committed to creating sustainable value across European markets.
+            </p>
+
+            <div class="mission-statement">
+                "We stand before you as third-generation members and principal shareholders of one of the region's most 
+                respected conglomerates. With more than 25 years each in our family business, we have witnessed and contributed 
+                to its growth across multiple economic cycles. Today, as we prepare the fourth generation to join this journey, 
+                we are building a platform that embodies the principles of the past while forging its own distinct path."
+            </div>
+
+            <div class="heritage-grid">
+                <div class="heritage-item">
+                    <h3>Heritage</h3>
+                    <p>Three generations of entrepreneurial leadership with deep roots in European business and proven 
+                    track record across economic cycles.</p>
+                </div>
+                <div class="heritage-item">
+                    <h3>Expertise</h3>
+                    <p>Over a century of combined operational experience across our leadership team in building and scaling 
+                    businesses across multiple industries and geographies.</p>
+                </div>
+                <div class="heritage-item">
+                    <h3>Vision</h3>
+                    <p>Creating a sustainable investment platform for the next generation while maintaining the values 
+                    of integrity, excellence, and long-term thinking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <h2>Our Portfolio</h2>
+            <p class="section-intro">
+                We have built a diversified platform spanning four complementary pillars, each operating independently 
+                while creating synergistic value for our stakeholders.
+            </p>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <h3>Velorin</h3>
+                    <p class="subtitle">Yield Fund</p>
+                    <p>
+                        A sophisticated credit platform delivering consistent returns through diversified investments in 
+                        senior real estate debt, infrastructure bonds, and investment-grade credit opportunities across 
+                        European markets.
+                    </p>
+                    <a href="#contact" class="portfolio-link">LEARN MORE →</a>
+                </div>
+
+                <div class="portfolio-item">
+                    <h3>Norven</h3>
+                    <p class="subtitle">Insurance Platform</p>
+                    <p>
+                        Building a next-generation European insurance platform with comprehensive coverage across the United 
+                        Kingdom, Germany, Nordics, and Benelux, serving individuals and businesses with tailored solutions.
+                    </p>
+                    <a href="#contact" class="portfolio-link">LEARN MORE →</a>
+                </div>
+
+                <div class="portfolio-item">
+                    <h3>Tierra Fina</h3>
+                    <p class="subtitle">Real Estate Development</p>
+                    <p>
+                        Premium European real estate development focused on institutional-grade residential assets including 
+                        build-to-rent, student housing, and mixed-use projects in strategic German and UK locations.
+                    </p>
+                    <a href="#contact" class="portfolio-link">LEARN MORE →</a>
+                </div>
+
+                <div class="portfolio-item">
+                    <h3>Norclime</h3>
+                    <p class="subtitle">Sustainable Infrastructure</p>
+                    <p>
+                        Investing in the transition to a sustainable economy through renewable energy, clean technology, 
+                        sustainable transport, and circular economy infrastructure projects across Europe.
+                    </p>
+                    <a href="#contact" class="portfolio-link">LEARN MORE →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership">
+        <div class="container">
+            <h2>Leadership</h2>
+            
+            <div class="leadership-content">
+                <div class="leader-profile">
+                    <h3>Tayfun Demirøren</h3>
+                    <p class="title">Founder & Chief Executive Officer</p>
+                    <div style="margin-top: 3rem;">
+                        <h3>Reyhan Demirøren</h3>
+                        <p class="title">Co-Founder & Director</p>
+                    </div>
+                </div>
+                <div class="leader-bio">
+                    <p style="margin-bottom: 1.5rem;">
+                        Tayfun and Reyhan Demirøren are third-generation business leaders, each with over 25 years of 
+                        experience in building and scaling enterprises across multiple industries. As principal shareholders 
+                        in their family's conglomerate, they have cultivated deep relationships throughout European markets.
+                    </p>
+                    <p style="margin-bottom: 2rem;">
+                        Together, they bring complementary expertise and shared vision to the firm's operations, building 
+                        a platform that honors their family's legacy while creating new opportunities for the next generation.
+                    </p>
+                    <p>
+                        Leading a team of seasoned professionals with expertise across finance, real estate, insurance, and 
+                        sustainable infrastructure, they bring generational wisdom to bear on a platform designed to create 
+                        sustainable value while maintaining the principles of integrity, excellence, and long-term strategic 
+                        thinking that have guided their family's success.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mission-statement" style="margin-top: 5rem;">
+                "We are not simply custodians of capital; we are committed partners in enterprise. We are personally invested 
+                in the success of our partners and the long-term prosperity of this firm. As we prepare the fourth generation 
+                to take their place in leadership, we ensure continuity of values whilst embracing innovation."
+            </div>
+
+            <h2 style="margin-top: 5rem;">Our Team</h2>
+            <p class="section-intro" style="margin-bottom: 3rem;">
+                Our leadership team brings together decades of experience across investment management, real estate 
+                development, insurance operations, and sustainable infrastructure. Together with a growing advisory 
+                board of industry veterans, we combine deep operational expertise with strategic vision.
+            </p>
+            
+            <h2 style="margin-top: 3rem;">Our Values</h2>
+            <div class="values">
+                <div class="value-item">
+                    <h4>Integrity</h4>
+                    <p>We conduct business with the highest ethical standards, building relationships based on trust, 
+                    transparency, and mutual respect.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Excellence</h4>
+                    <p>We pursue excellence in every endeavor, combining rigorous analysis with entrepreneurial spirit 
+                    to create superior outcomes.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Partnership</h4>
+                    <p>We collaborate with best-in-class operators and entrepreneurs, creating value through shared 
+                    vision and complementary expertise.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Long-term Thinking</h4>
+                    <p>We take a patient, generational approach to value creation, building businesses that endure and 
+                    thrive across economic cycles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <p class="label">General Inquiries</p>
+                        <p class="value">info@demirorenordic.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <p class="label">Investor Relations</p>
+                        <p class="value">info@demirorenordic.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <p class="label">Location</p>
+                        <p class="value">London, United Kingdom</p>
+                    </div>
+                </div>
+
+                <div class="contact-message">
+                    <p style="margin-bottom: 2rem;">
+                        We welcome inquiries from potential partners, investors, and collaborators who share our 
+                        commitment to long-term value creation and sustainable business practices.
+                    </p>
+                    <p>
+                        For partnership opportunities and investor relations, please reach out directly. We look forward 
+                        to exploring how we might work together to build the next great legacy.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">DEMIRØREN NORDIC CAPITAL</div>
+            <div>&copy; 2025 Demirøren Nordic Capital. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navigation scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
