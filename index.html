@@ -137,10 +137,26 @@
         }
 
         nav .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             font-size: 1.4rem;
             font-weight: 400;
             letter-spacing: 1px;
             color: #1a1a1a;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #1e3a5f;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 300;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         .mobile-menu-toggle {
@@ -285,6 +301,12 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 4rem;
             margin-top: 4rem;
+        }
+
+        @media (max-width: 1200px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .portfolio-item {
@@ -467,8 +489,17 @@
         }
 
         .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
             font-size: 1rem;
             letter-spacing: 1px;
+        }
+
+        .footer-logo .logo-icon {
+            width: 30px;
+            height: 30px;
+            font-size: 1.3rem;
         }
 
         /* Responsive */
@@ -549,6 +580,12 @@
 
             nav .logo {
                 font-size: 1.1rem;
+            }
+
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1.5rem;
             }
 
             .hero {
@@ -771,7 +808,10 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="container">
-            <div class="logo">DEMIRØREN NORDIC CAPITAL</div>
+            <div class="logo">
+                <div class="logo-icon">D</div>
+                <span>DEMIRØREN NORDIC CAPITAL</span>
+            </div>
             <div class="mobile-menu-toggle" id="mobileMenuToggle">
                 <span></span>
                 <span></span>
@@ -825,8 +865,8 @@
                 </div>
                 <div class="heritage-item">
                     <h3>Vision</h3>
-                    <p>Creating a sustainable investment platform for the next generation while maintaining the values 
-                    of integrity, excellence, and long-term thinking.</p>
+                    <p>Creating a sustainable investment platform spanning five strategic sectors for the next generation 
+                    whilst maintaining the values of integrity, excellence, and long-term thinking.</p>
                 </div>
             </div>
         </div>
@@ -837,23 +877,11 @@
         <div class="container">
             <h2>Our Portfolio</h2>
             <p class="section-intro">
-                We have built a diversified platform spanning four complementary pillars, each operating independently 
+                We have built a diversified platform spanning five complementary pillars, each operating independently 
                 while creating synergistic value for our stakeholders.
             </p>
 
             <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-logo">V</div>
-                    <h3>Velorin</h3>
-                    <p class="subtitle">Yield Fund</p>
-                    <p>
-                        A sophisticated credit platform delivering consistent returns through diversified investments in 
-                        senior real estate debt, infrastructure bonds, and investment-grade credit opportunities across 
-                        European markets.
-                    </p>
-                    <a href="#contact" class="portfolio-link">LEARN MORE →</a>
-                </div>
-
                 <div class="portfolio-item">
                     <div class="portfolio-logo">N</div>
                     <h3>Norven</h3>
@@ -877,12 +905,35 @@
                 </div>
 
                 <div class="portfolio-item">
+                    <div class="portfolio-logo">V</div>
+                    <h3>Velorin</h3>
+                    <p class="subtitle">Yield Fund</p>
+                    <p>
+                        A sophisticated credit platform delivering consistent returns through diversified investments in 
+                        senior real estate debt, infrastructure bonds, and investment-grade credit opportunities across 
+                        European markets.
+                    </p>
+                    <a href="#contact" class="portfolio-link">LEARN MORE →</a>
+                </div>
+
+                <div class="portfolio-item">
                     <div class="portfolio-logo">N</div>
                     <h3>Norclime</h3>
                     <p class="subtitle">Sustainable Infrastructure</p>
                     <p>
                         Investing in the transition to a sustainable economy through renewable energy, clean technology, 
                         sustainable transport, and circular economy infrastructure projects across Europe.
+                    </p>
+                    <a href="#contact" class="portfolio-link">LEARN MORE →</a>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-logo">C</div>
+                    <h3>Costanova</h3>
+                    <p class="subtitle">Hotels</p>
+                    <p>
+                        Developing and operating a portfolio of premium hospitality properties across select European 
+                        destinations, delivering exceptional guest experiences whilst creating long-term asset value.
                     </p>
                     <a href="#contact" class="portfolio-link">LEARN MORE →</a>
                 </div>
@@ -932,8 +983,8 @@
             <h2 style="margin-top: 5rem;">Our Team</h2>
             <p class="section-intro" style="margin-bottom: 3rem;">
                 Our leadership team brings together decades of experience across investment management, real estate 
-                development, insurance operations, and sustainable infrastructure. Together with a growing advisory 
-                board of industry veterans, we combine deep operational expertise with strategic vision.
+                development, insurance operations, hospitality, and sustainable infrastructure. Together with a growing 
+                advisory board of industry veterans, we combine deep operational expertise with strategic vision.
             </p>
             
             <h2 style="margin-top: 3rem;">Our Values</h2>
@@ -1000,7 +1051,10 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">DEMIRØREN NORDIC CAPITAL</div>
+            <div class="footer-logo">
+                <div class="logo-icon">D</div>
+                <span>DEMIRØREN NORDIC CAPITAL</span>
+            </div>
             <div>&copy; 2025 Demirøren Nordic Capital. All rights reserved.</div>
         </div>
     </footer>
