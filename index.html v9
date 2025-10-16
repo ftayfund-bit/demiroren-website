@@ -942,7 +942,11 @@
         <div class="leadership-content">
             <div class="leader-profile">
                 <h3>Tayfun Demirøren</h3>
-                <p class="title">Founder & Chief Executive Officer</p>
+                <p class="title">Co-Founder & Chairman</p>
+                <div style="margin-top: 3rem;">
+                    <h3>Salih Berberoğlu</h3>
+                    <p class="title">Chief Executive Officer</p>
+                </div>
                 <div style="margin-top: 3rem;">
                     <h3>Reyhan Demirøren</h3>
                     <p class="title">Co-Founder & Director</p>
@@ -954,15 +958,22 @@
                     experience in building and scaling enterprises across multiple industries. As principal shareholders 
                     in their family's conglomerate, they have cultivated deep relationships throughout European markets.
                 </p>
+                <p style="margin-bottom: 1.5rem;">
+                    Salih Berberoğlu has spent over two decades at the intersection of corporate leadership and investment 
+                    banking. Having led financial and operational strategy for one of the region's most prominent holding 
+                    groups, he brings intimate knowledge of building and financing businesses across multiple sectors—from 
+                    heavy industry and energy to infrastructure and consumer businesses. His tenure included guiding complex 
+                    acquisitions, structuring project finance, and serving on the boards of transformative infrastructure projects.
+                </p>
                 <p style="margin-bottom: 2rem;">
-                    Together, they bring complementary expertise and shared vision to the firm's operations, building 
-                    a platform that honors their family's legacy while creating new opportunities for the next generation.
+                    With expertise forged through both operational leadership and capital markets advisory, Salih understands 
+                    the full lifecycle of value creation. Educated at Purdue University and Macalester College, he combines 
+                    analytical rigor with entrepreneurial instinct.
                 </p>
                 <p>
-                    Leading a team of seasoned professionals with expertise across finance, real estate, insurance, and 
-                    sustainable infrastructure, they bring generational wisdom to bear on a platform designed to create 
-                    sustainable value while maintaining the principles of integrity, excellence, and long-term strategic 
-                    thinking that have guided their family's success.
+                    Together, the leadership team brings complementary expertise and shared vision to the firm's operations, 
+                    building a platform that honors generational business wisdom while creating new opportunities for sustainable 
+                    value creation.
                 </p>
             </div>
         </div>
