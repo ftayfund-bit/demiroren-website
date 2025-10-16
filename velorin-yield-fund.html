@@ -1,196 +1,584 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Velorin Yield Fund – Demirøren Nordic Capital</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
-  <style>
-    :root { --navy:#0A183D; --white:#fff; --slate:#49494D; --accent:#3259A8; }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--navy);color:var(--white)}
-    a{color:inherit}
-    nav{position:sticky;top:0;z-index:1000;background:rgba(10,24,61,.95);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid rgba(255,255,255,.08)}
-    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:14px 20px}
-    .brand{font-family:'Libre Baskerville',serif;font-weight:700}
-    .spacer{flex:1}
-    .nav a{font-weight:600;text-decoration:none;margin:0 10px;padding:6px 2px;border-bottom:2px solid transparent}
-    .nav a:hover{border-color:var(--accent)}
-    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px}
-    h1,h2,h3{font-family:'Libre Baskerville',serif;margin:0 0 10px}
-    h1{font-size:42px}
-    h2{font-size:28px;color:var(--accent)}
-    p,li{color:#e7e8ee;line-height:1.6}
-    section{margin:38px 0;padding:22px;border:1px solid rgba(255,255,255,.06);border-radius:10px;background:rgba(255,255,255,.035);box-shadow:0 10px 28px rgba(10,24,61,.20)}
-    .grid{display:grid;gap:16px}
-    .pillars{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-    .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:16px;border-radius:10px}
-    .casegrid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .bio{display:flex;gap:14px;align-items:flex-start}
-    .bio img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.15)}
-    .numbers{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-    .kpi{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:18px;text-align:center}
-    .kpi strong{display:block;font-family:'Libre Baskerville',serif;font-size:28px}
-    .download{display:inline-block;margin-top:6px;padding:12px 18px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600}
-    .download:hover{background:#23447c}
-    .footer-note{color:var(--slate);text-align:center;margin-top:8px;font-style:italic}
-    .watermark{position:fixed;bottom:10px;right:16px;color:#ffffff30;font-family:'Libre Baskerville',serif;pointer-events:none}
-    @media (max-width:720px){h1{font-size:32px} h2{font-size:22px}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velorin Yield Fund - Demirøren Nordic Capital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: white;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.4rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #1a1a1a;
+        }
+
+        nav .back-link {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #1a1a1a;
+            transition: opacity 0.3s;
+        }
+
+        nav .back-link:hover {
+            opacity: 0.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #f5f5f5;
+            padding: 10rem 2rem 4rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 4rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        p {
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Highlights Grid */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .highlight-card {
+            padding: 2rem;
+            background: white;
+            border-top: 2px solid #1a1a1a;
+        }
+
+        .highlight-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-card p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* Alternating Sections */
+        section:nth-child(even) {
+            background: #f5f5f5;
+        }
+
+        section:nth-child(odd) {
+            background: white;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-card {
+            background: white;
+            padding: 2.5rem;
+            border-top: 2px solid #1a1a1a;
+        }
+
+        section:nth-child(even) .portfolio-card {
+            background: #f5f5f5;
+        }
+
+        .portfolio-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-card .stat {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .portfolio-card .stat strong {
+            color: #1a1a1a;
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            text-align: left;
+        }
+
+        .team-member h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member .title {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .team-member p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-top: 2px solid #1a1a1a;
+        }
+
+        section:nth-child(even) .stat-card {
+            background: #f5f5f5;
+        }
+
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .stat-card .label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Risk Grid */
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .risk-card {
+            padding: 2rem;
+            border-left: 3px solid #1a1a1a;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem;
+            margin: 4rem 0;
+            font-size: 1.5rem;
+            line-height: 1.8;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* Download Section */
+        .download-section {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+
+        .download-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: #666;
+            padding: 3rem 4rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .highlights-grid,
+            .portfolio-grid,
+            .team-grid,
+            .stats-grid,
+            .risk-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero {
+                padding: 140px 1.5rem 3rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .highlights-grid,
+            .portfolio-grid,
+            .team-grid,
+            .stats-grid,
+            .risk-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .quote-section {
+                padding: 2rem;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <nav>
-    <div class="nav-inner">
-      <div class="brand">Velorin Yield Fund</div>
-      <div class="spacer"></div>
-      <div class="nav">
-        <a href="#cover">Home</a>
-        <a href="#highlights">Highlights</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#structure">Capital Structure</a>
-        <a href="#governance">Governance</a>
-        <a href="#risk">Risk</a>
-        <a href="#esg">ESG</a>
-        <a href="#team">Team</a>
-        <a href="#financials">Financials</a>
-        <a href="#case1">Moritz Tower</a>
-        <a href="#case2">Blue House</a>
-        <a href="#case3">Bulwark</a>
-        <a href="#download">PDF</a>
-      </div>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">VELORIN YIELD FUND</div>
+            <a href="index.html" class="back-link">← Back to Demirøren Nordic Capital</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Velorin Yield Fund</h1>
+            <p class="tagline">Institutional Real Estate Income Platform</p>
+        </div>
+    </section>
+
+    <!-- Investment Highlights -->
+    <section>
+        <div class="container">
+            <h2>Investment Highlights</h2>
+            <p style="max-width: 900px;">
+                A sophisticated credit platform delivering consistent returns through diversified investments in 
+                senior real estate debt, infrastructure bonds, and investment-grade credit opportunities across 
+                European markets.
+            </p>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <h3>Governance</h3>
+                    <p>Robust oversight with independent controls and transparent reporting structures.</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Alignment</h3>
+                    <p>Management co-investment ensures incentives matched to investor outcomes.</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Leverage</h3>
+                    <p>Conservative structure with disciplined capital deployment and risk management.</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Yield</h3>
+                    <p>Stable income from high-quality, diversified institutional-grade assets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Overview -->
+    <section>
+        <div class="container">
+            <h2>Portfolio Overview</h2>
+            <p style="max-width: 900px;">
+                Strategic exposure to Berlin and Bremen residential markets, featuring three principal investments 
+                delivering diversified income streams and long-term value appreciation.
+            </p>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <h3>Moritz Tower</h3>
+                    <p class="stat"><strong>Location:</strong> Berlin, Mediaspree</p>
+                    <p class="stat"><strong>Size:</strong> 21,500 m² across 25 floors</p>
+                    <p class="stat"><strong>Units:</strong> 211 residential + 5,000 m² commercial</p>
+                    <p>Berlin's tallest residential tower in prestigious Mediaspree district. Near completion, delivering stable distributions.</p>
+                </div>
+                <div class="portfolio-card">
+                    <h3>The Bulwark</h3>
+                    <p class="stat"><strong>Location:</strong> Bremen, UNESCO Heritage District</p>
+                    <p class="stat"><strong>Units:</strong> 272 units, 338 beds</p>
+                    <p class="stat"><strong>Type:</strong> Premium student housing</p>
+                    <p>Comprehensive conversion creating modern all-inclusive accommodation with extensive amenities in high-demand university market.</p>
+                </div>
+                <div class="portfolio-card">
+                    <h3>Blue House</h3>
+                    <p class="stat"><strong>Location:</strong> Berlin</p>
+                    <p class="stat"><strong>Units:</strong> 58 fully serviced units</p>
+                    <p class="stat"><strong>Type:</strong> Co-living development</p>
+                    <p>Innovative co-living platform featuring all-inclusive packages. Modern amenities and community-centric design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financial Highlights -->
+    <section>
+        <div class="container">
+            <h2>Financial Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number">€293M</div>
+                    <div class="label">Portfolio Value</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">3</div>
+                    <div class="label">Principal Investments</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">541</div>
+                    <div class="label">Total Units</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">4.91%</div>
+                    <div class="label">Stabilized Cap Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Governance -->
+    <section>
+        <div class="container">
+            <h2>Governance & Oversight</h2>
+            <p style="max-width: 900px;">
+                Institutional-grade governance structure with independent oversight, regular audits, and transparent 
+                reporting. Management co-investment ensures complete alignment with investor interests.
+            </p>
+            <div class="risk-grid">
+                <div class="risk-card">
+                    <h3>Independent Oversight</h3>
+                    <p>Regular third-party audits and independent compliance monitoring.</p>
+                </div>
+                <div class="risk-card">
+                    <h3>Transparent Reporting</h3>
+                    <p>Comprehensive quarterly reporting with full operational and financial transparency.</p>
+                </div>
+                <div class="risk-card">
+                    <h3>Alignment</h3>
+                    <p>Significant management co-investment ensuring shared interests and outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Management -->
+    <section>
+        <div class="container">
+            <h2>Risk Management</h2>
+            <div class="risk-grid">
+                <div class="risk-card">
+                    <h3>Interest Rate Risk</h3>
+                    <p>Fixed-rate financing structures reduce exposure to interest rate volatility.</p>
+                </div>
+                <div class="risk-card">
+                    <h3>Liquidity Management</h3>
+                    <p>Active cash management with prudent reserves and disciplined capital allocation.</p>
+                </div>
+                <div class="risk-card">
+                    <h3>Tenant Diversification</h3>
+                    <p>Diversified tenant base with disciplined selection maintaining stable occupancy.</p>
+                </div>
+                <div class="risk-card">
+                    <h3>Market Risk</h3>
+                    <p>Strategic geographic focus in resilient Berlin and Bremen markets.</p>
+                </div>
+                <div class="risk-card">
+                    <h3>Operational Excellence</h3>
+                    <p>Professional asset management with proven track record in property operations.</p>
+                </div>
+                <div class="risk-card">
+                    <h3>Compliance</h3>
+                    <p>Comprehensive regulatory compliance and ESG integration across portfolio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESG Integration -->
+    <section>
+        <div class="container">
+            <h2>ESG Integration</h2>
+            <p style="max-width: 900px;">
+                Commitment to sustainable operations with measurable environmental initiatives, social responsibility, 
+                and robust governance practices across all portfolio assets.
+            </p>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <h3>Environmental</h3>
+                    <p>Energy efficiency initiatives, sustainable building practices, and reduced carbon footprint.</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Social</h3>
+                    <p>Tenant wellbeing, community engagement, and inclusive living environments.</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Governance</h3>
+                    <p>Transparent operations, ethical business practices, and stakeholder accountability.</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Certifications</h3>
+                    <p>Pursuing recognized sustainability certifications and industry best practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team -->
+    <section>
+        <div class="container">
+            <h2>Leadership Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>Tayfun Demirøren</h3>
+                    <p class="title">Co-Founder & Chairman</p>
+                    <p>Third-generation business leader with over 25 years of experience building and scaling enterprises. Strategic oversight and governance leadership.</p>
+                </div>
+                <div class="team-member">
+                    <h3>Salih Berberoğlu</h3>
+                    <p class="title">Chief Executive Officer</p>
+                    <p>Over 21 years of experience in corporate finance and investment banking. Former CFO and COO of major holding group with expertise in M&A and project finance.</p>
+                </div>
+                <div class="team-member">
+                    <h3>Reyhan Demirøren</h3>
+                    <p class="title">Co-Founder & Director</p>
+                    <p>Strategic leadership with over 25 years of operational experience across multiple industries. Board oversight and strategic direction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <div class="quote-section">
+        "Velorin operates with institutional transparency, conservative leverage, and long-term partnership at its core. 
+        We are committed to delivering consistent returns while maintaining the highest standards of governance and operational excellence."
     </div>
-  </nav>
 
-  <div class="wrap">
-    <section id="cover">
-      <h1>Velorin Yield Fund – Institutional Real Estate Fund</h1>
-      <p style="font-family:'Libre Baskerville',serif;font-size:1.15rem">Structured for Stability.</p>
-      <p>Demirøren Nordic Capital presents Velorin Yield Fund, an institutional platform focused on durable income and conservative leverage across Berlin and Bremen residential assets.</p>
-    </section>
-
-    <section id="highlights">
-      <h2>Investment Highlights</h2>
-      <div class="grid pillars">
-        <div class="card"><h3>Governance</h3><p>Robust oversight and independent controls.</p></div>
-        <div class="card"><h3>Alignment</h3><p>10% GP co‑investment; incentives matched to LP outcomes.</p></div>
-        <div class="card"><h3>Leverage</h3><p>Conservative structure with fixed‑rate note at 3.75%.</p></div>
-        <div class="card"><h3>Yield</h3><p>Stable NOI from diversified, high‑quality assets.</p></div>
-      </div>
-    </section>
-
-    <section id="portfolio">
-      <h2>Portfolio Overview</h2>
-      <p>Core exposure to Berlin and Bremen residential; maps and NOI breakdown to be inserted.</p>
-      <div class="grid casegrid">
-        <div class="card"><img alt="Asset Map placeholder" src="ASSET_MAP_PLACEHOLDER.png" style="width:100%;border-radius:8px"></div>
-        <div class="card"><img alt="NOI Breakdown placeholder" src="NOI_BREAKDOWN_CHART.png" style="width:100%;border-radius:8px"></div>
-      </div>
-    </section>
-
-    <section id="structure">
-      <h2>Capital Structure &amp; Returns</h2>
-      <p>Clear capital stack with GP, LPs, and 3.75% fixed‑rate note. Transparent return waterfall.</p>
-      <img alt="Capital Stack" src="CAPITAL_STACK_DIAGRAM.png" style="max-width:420px;width:100%;border-radius:8px" />
-    </section>
-
-    <section id="governance">
-      <h2>Governance &amp; Oversight</h2>
-      <p>CSSF‑regulated structure, Big Four audit, and 10% GP co‑investment ensure alignment and accountability.</p>
-      <img alt="Governance flow" src="GOVERNANCE_FLOW_SVG.png" style="max-width:360px;width:100%;border-radius:8px" />
-    </section>
-
-    <section id="risk">
-      <h2>Risk Management &amp; Compliance</h2>
-      <div class="grid pillars">
-        <div class="card"><h3>Rate</h3><p>Fixed‑rate financing reduces interest volatility.</p></div>
-        <div class="card"><h3>Liquidity</h3><p>Active cash management and prudent reserves.</p></div>
-        <div class="card"><h3>Tenant</h3><p>Diversified tenant base; disciplined selection; stable occupancy.</p></div>
-        <div class="card"><h3>ESG</h3><p>Article 8–aligned approach with measurable initiatives.</p></div>
-        <div class="card"><h3>Governance</h3><p>Independent supervision, regular audits, and clear reporting.</p></div>
-      </div>
-    </section>
-
-    <section id="esg">
-      <h2>ESG Integration</h2>
-      <p>Quantified initiatives across energy, certification, and tenant wellbeing; examples to be inserted (e.g., GRESB scores, BREEAM/LEED assets).</p>
-    </section>
-
-    <section id="team">
-      <h2>Team &amp; Track Record</h2>
-      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
-        <div class="card bio">
-          <img src="https://placehold.co/128x128" alt="Headshot placeholder" />
-          <div>
-            <h3>Founder/CEO</h3>
-            <p>[Name] – [Short bio overview of institutional real estate experience and leadership.]</p>
-          </div>
+    <!-- Download Section -->
+    <section class="download-section">
+        <div class="container">
+            <h2>Investor Materials</h2>
+            <p>For detailed financial information and comprehensive investment documentation, please contact our investor relations team.</p>
+            <a href="mailto:info@demirorennordiccapital.com" class="download-btn">CONTACT INVESTOR RELATIONS</a>
         </div>
-        <div class="card bio">
-          <img src="https://placehold.co/128x128" alt="Headshot placeholder" />
-          <div>
-            <h3>CFO</h3>
-            <p>[Name] – [Short bio covering capital markets, reporting, and risk management.]</p>
-          </div>
-        </div>
-        <div class="card bio">
-          <img src="https://placehold.co/128x128" alt="Headshot placeholder" />
-          <div>
-            <h3>Portfolio Manager</h3>
-            <p>[Name] – [Short bio covering asset management and operations.]</p>
-          </div>
-        </div>
-      </div>
-      <p class="footer-note">Track record timeline: [Insert milestones, acquisitions, exits, and key years].</p>
     </section>
 
-    <section id="financials">
-      <h2>Financial Highlights</h2>
-      <div class="numbers">
-        <div class="kpi"><strong>€293M</strong><span>Portfolio value</span></div>
-        <div class="kpi"><strong>84%</strong><span>NOI margin</span></div>
-        <div class="kpi"><strong>4.91%</strong><span>Stabilized cap rate</span></div>
-      </div>
-    </section>
-
-    <section id="case1">
-      <h2>Case Study: Moritz Tower (Berlin)</h2>
-      <div class="grid casegrid">
-        <div class="card"><p>189 apartments, 21,500 sqm, 95 m tower, Mediaspree district.</p><p>Contribution: 66% of portfolio NOI.</p></div>
-        <div class="card"><img alt="Moritz Tower render" src="MORITZ_TOWER_RENDER.png" style="width:100%;border-radius:8px"></div>
-      </div>
-    </section>
-
-    <section id="case2">
-      <h2>Case Study: Blue House (Berlin Ampostufer)</h2>
-      <div class="grid casegrid">
-        <div class="card"><p>58 serviced apartments | €25/sqm rent | 84% occupancy | stabilized 2024.</p></div>
-        <div class="card"><img alt="Blue House image" src="BLUE_HOUSE_FACADE.png" style="width:100%;border-radius:8px"></div>
-      </div>
-    </section>
-
-    <section id="case3">
-      <h2>Case Study: The Bulwark (Bremen)</h2>
-      <div class="grid casegrid">
-        <div class="card"><p>272 units | UNESCO heritage site near Altstadt | Redevelopment from Basler insurance HQ.</p></div>
-        <div class="card"><img alt="Bulwark render" src="BULWARK_RENDER.png" style="width:100%;border-radius:8px"></div>
-      </div>
-    </section>
-
-    <section id="download">
-      <h2>Download</h2>
-      <p>Download the full investor deck PDF for the Velorin Yield Fund.</p>
-      <a class="download" href="VELORIN_DECK.pdf" download>Download Full Investor Deck (PDF)</a>
-    </section>
-
-    <section id="disclaimer">
-      <h2>Closing &amp; Disclaimer</h2>
-      <p class="footer-note">“Velorin operates with institutional transparency, conservative leverage, and long‑term partnership at its core.”</p>
-    </section>
-  </div>
-
-  <div class="watermark">Norven</div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Velorin Yield Fund - Demirøren Nordic Capital. All rights reserved.</p>
+    </footer>
 </body>
 </html>
