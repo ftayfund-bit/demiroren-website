@@ -561,12 +561,6 @@
                 font-size: 1.1rem;
             }
 
-            .logo-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 1.5rem;
-            }
-
             .hero {
                 padding: 140px 1.5rem 3rem 1.5rem;
                 min-height: 80vh;
@@ -728,11 +722,6 @@
         @media (max-width: 480px) {
             nav {
                 padding: 1rem 0;
-            }
-
-            nav ul {
-                gap: 1rem;
-                font-size: 0.8rem;
             }
 
             .hero h1 {
@@ -916,7 +905,7 @@
                         community-centric design create exceptional resident satisfaction and strong retention rates.
                     </p>
                 </div>
-                <a href="#contact" class="portfolio-link">LEARN MORE →</a>
+                <a href="velorin.html" class="portfolio-link">VIEW DETAILED INVESTOR PAGE →</a>
             </div>
 
             <div class="portfolio-item">
@@ -1066,14 +1055,13 @@
 
 <script>
     // Password Protection
-    const correctPassword = "demiroren2025!"; // CHANGE THIS PASSWORD
+    const correctPassword = "demiroren2025!";
     const passwordForm = document.getElementById('passwordForm');
     const passwordInput = document.getElementById('passwordInput');
     const passwordError = document.getElementById('passwordError');
     const passwordOverlay = document.getElementById('passwordOverlay');
     const mainContent = document.getElementById('mainContent');
 
-    // Check if password was already entered in this session
     if (sessionStorage.getItem('authenticated') === 'true') {
         passwordOverlay.classList.add('hidden');
         mainContent.classList.add('visible');
@@ -1083,20 +1071,17 @@
         e.preventDefault();
         
         if (passwordInput.value === correctPassword) {
-            // Correct password
             sessionStorage.setItem('authenticated', 'true');
             passwordOverlay.classList.add('hidden');
             mainContent.classList.add('visible');
             passwordError.classList.remove('show');
         } else {
-            // Wrong password
             passwordError.classList.add('show');
             passwordInput.value = '';
             passwordInput.focus();
         }
     });
 
-    // Mobile menu toggle
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const navMenu = document.getElementById('navMenu');
     
@@ -1104,14 +1089,12 @@
         navMenu.classList.toggle('active');
     });
 
-    // Close mobile menu when clicking on a link
     document.querySelectorAll('#navMenu a').forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
         });
     });
 
-    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -1125,7 +1108,6 @@
         });
     });
 
-    // Navigation scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         if (window.pageYOffset > 100) {
