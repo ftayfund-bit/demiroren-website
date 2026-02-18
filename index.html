@@ -16,491 +16,107 @@
       --text-gray: #6c757d;
       --dark-text: #1A2332;
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: Georgia, 'Times New Roman', serif;
-      line-height: 1.7;
-      color: var(--dark-text);
-      background: var(--white);
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Georgia, 'Times New Roman', serif; line-height: 1.7; color: var(--dark-text); background: var(--white); }
 
-    /* ── SCROLL ANIMATIONS ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
-    /* ── NAVIGATION ── */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(255,255,255,0.98);
-      border-bottom: 1px solid var(--medium-gray);
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-    }
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 2rem;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--navy);
-    }
-    .logo-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--navy);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .logo-text {
-      font-size: 0.9rem;
-      letter-spacing: 2px;
-      font-weight: 400;
-      text-transform: uppercase;
-    }
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 2.5rem;
-    }
-    .nav-links a {
-      color: var(--navy);
-      text-decoration: none;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-      transition: color 0.3s;
-    }
-    .nav-links a:hover {
-      color: var(--red);
-    }
+    nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--medium-gray); z-index: 1000; backdrop-filter: blur(10px); }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; }
+    .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--navy); }
+    .logo-dot { width: 10px; height: 10px; background: var(--navy); border-radius: 50%; flex-shrink: 0; }
+    .logo-text { font-size: 0.9rem; letter-spacing: 2px; font-weight: 400; text-transform: uppercase; }
+    .nav-links { display: flex; list-style: none; gap: 2.5rem; }
+    .nav-links a { color: var(--navy); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.5px; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--red); }
 
-    /* ── HAMBURGER ── */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--navy);
-      transition: all 0.3s ease;
-    }
-    .hamburger.open span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-    .hamburger.open span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.open span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 72px;
-      left: 0;
-      width: 100%;
-      background: rgba(255,255,255,0.99);
-      border-bottom: 1px solid var(--medium-gray);
-      z-index: 999;
-      padding: 1.5rem 2rem;
-      flex-direction: column;
-      gap: 1.25rem;
-      backdrop-filter: blur(10px);
-    }
-    .mobile-menu.open {
-      display: flex;
-    }
-    .mobile-menu a {
-      color: var(--navy);
-      text-decoration: none;
-      font-size: 1rem;
-      letter-spacing: 0.5px;
-      transition: color 0.3s;
-      padding: 0.25rem 0;
-      border-bottom: 1px solid var(--medium-gray);
-    }
-    .mobile-menu a:last-child {
-      border-bottom: none;
-    }
-    .mobile-menu a:hover {
-      color: var(--red);
-    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); transition: all 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 72px; left: 0; width: 100%; background: rgba(255,255,255,0.99); border-bottom: 1px solid var(--medium-gray); z-index: 999; padding: 1.5rem 2rem; flex-direction: column; gap: 1.25rem; backdrop-filter: blur(10px); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: var(--navy); text-decoration: none; font-size: 1rem; letter-spacing: 0.5px; transition: color 0.3s; padding: 0.25rem 0; border-bottom: 1px solid var(--medium-gray); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--red); }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 8rem 2rem 4rem;
-      background: linear-gradient(160deg, var(--navy) 0%, #2a3b52 60%, #1e2d3f 100%);
-      color: var(--white);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 500px;
-      height: 500px;
-      border: 1px solid rgba(255,255,255,0.04);
-      border-radius: 50%;
-      pointer-events: none;
-      animation: pulse 6s ease-in-out infinite;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 320px;
-      height: 320px;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 50%;
-      pointer-events: none;
-      animation: pulse 6s ease-in-out infinite 1s;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-      50% { transform: translate(-50%, -50%) scale(1.04); opacity: 0.6; }
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      animation: heroFade 1.2s ease forwards;
-    }
-    @keyframes heroFade {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 400;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      margin-bottom: 0.25rem;
-      line-height: 1.1;
-    }
-    .hero h1 span {
-      display: block;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      letter-spacing: 10px;
-      margin-top: 0.25rem;
-    }
-    .hero-tagline {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.7);
-      margin-top: 2rem;
-      font-style: italic;
-      max-width: 520px;
-      line-height: 1.8;
-    }
-    .hero-rule {
-      width: 50px;
-      height: 2px;
-      background: var(--red);
-      margin: 2.5rem auto 0;
-    }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 8rem 2rem 4rem; background: linear-gradient(160deg, var(--navy) 0%, #2a3b52 60%, #1e2d3f 100%); color: var(--white); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 500px; border: 1px solid rgba(255,255,255,0.04); border-radius: 50%; pointer-events: none; animation: pulse 6s ease-in-out infinite; }
+    .hero::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 320px; height: 320px; border: 1px solid rgba(255,255,255,0.06); border-radius: 50%; pointer-events: none; animation: pulse 6s ease-in-out infinite 1s; }
+    @keyframes pulse { 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 50% { transform: translate(-50%, -50%) scale(1.04); opacity: 0.6; } }
+    .hero-content { position: relative; z-index: 1; animation: heroFade 1.2s ease forwards; }
+    @keyframes heroFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 400; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 0.25rem; line-height: 1.1; }
+    .hero h1 span { display: block; font-size: clamp(2rem, 5vw, 3.2rem); letter-spacing: 10px; margin-top: 0.25rem; }
+    .hero-tagline { font-size: 1.05rem; color: rgba(255,255,255,0.7); margin-top: 2rem; font-style: italic; max-width: 520px; line-height: 1.8; }
+    .hero-rule { width: 50px; height: 2px; background: var(--red); margin: 2.5rem auto 0; }
 
-    /* ── SECTIONS ── */
-    section {
-      padding: 5rem 2rem;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 400;
-      margin-bottom: 1.5rem;
-      letter-spacing: 1px;
-    }
-    .eyebrow {
-      font-size: 0.7rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 0.75rem;
-      display: block;
-    }
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .section-title { font-size: 1.8rem; font-weight: 400; margin-bottom: 1.5rem; letter-spacing: 1px; }
+    .eyebrow { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 0.75rem; display: block; }
 
-    /* ── ABOUT ── */
-    .about {
-      background: var(--light-gray);
-    }
-    .about-text p {
-      margin-bottom: 1.25rem;
-      font-size: 1.05rem;
-    }
+    .about { background: var(--light-gray); }
+    .about-text p { margin-bottom: 1.25rem; font-size: 1.05rem; }
 
-    /* ── FAMILY BANK ── */
-    .familybank {
-      background: var(--white);
-    }
-    .familybank-intro {
-      font-size: 1.1rem;
-      color: var(--text-gray);
-      margin-bottom: 2.5rem;
-      font-style: italic;
-    }
-    .familybank-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-    .familybank-item {
-      padding: 2rem;
-      background: var(--light-gray);
-      border-left: 3px solid var(--red);
-    }
-    .familybank-item h3 {
-      font-size: 1.1rem;
-      font-weight: 400;
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.5px;
-    }
-    .familybank-item p {
-      font-size: 0.95rem;
-      color: var(--text-gray);
-      line-height: 1.8;
-    }
+    .familybank { background: var(--white); }
+    .familybank-intro { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 2.5rem; font-style: italic; }
+    .familybank-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .familybank-item { padding: 2rem; background: var(--light-gray); border-left: 3px solid var(--red); }
+    .familybank-item h3 { font-size: 1.1rem; font-weight: 400; margin-bottom: 0.75rem; letter-spacing: 0.5px; }
+    .familybank-item p { font-size: 0.95rem; color: var(--text-gray); line-height: 1.8; }
 
-    /* ── DIVISIONS ── */
-    .divisions {
-      background: var(--white);
-    }
-    .divisions-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-    }
-    .division-card {
-      padding: 2rem;
-      border: 1px solid var(--medium-gray);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .division-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--red);
-      transition: width 0.3s ease;
-    }
-    .division-card:hover {
-      border-color: var(--navy);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(26,35,50,0.08);
-    }
-    .division-card:hover::after {
-      width: 100%;
-    }
-    .division-name {
-      font-size: 1.15rem;
-      font-weight: 400;
-      margin-bottom: 0.35rem;
-      letter-spacing: 0.5px;
-    }
-    .division-type {
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 1rem;
-    }
-    .division-desc {
-      font-size: 0.9rem;
-      color: var(--text-gray);
-      line-height: 1.6;
-    }
+    .divisions { background: var(--white); }
+    .divisions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .division-card { padding: 2rem; border: 1px solid var(--medium-gray); transition: all 0.3s ease; position: relative; overflow: hidden; }
+    .division-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--red); transition: width 0.3s ease; }
+    .division-card:hover { border-color: var(--navy); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(26,35,50,0.08); }
+    .division-card:hover::after { width: 100%; }
+    .division-name { font-size: 1.15rem; font-weight: 400; margin-bottom: 0.35rem; letter-spacing: 0.5px; }
+    .division-type { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    .division-desc { font-size: 0.9rem; color: var(--text-gray); line-height: 1.6; }
 
-    /* ── LEADERSHIP ── */
-    .leadership {
-      background: var(--navy);
-      color: var(--white);
-    }
-    .leadership .section-title {
-      color: var(--white);
-    }
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 3.5rem;
-      margin-top: 2.5rem;
-    }
-    .bio-section {
-      text-align: left;
-    }
-    .bio-section h2 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      letter-spacing: 1px;
-      color: var(--white);
-      margin-bottom: 1.25rem;
-    }
-    .bio-image {
-      width: 100%;
-      max-width: 220px;
-      height: 280px;
-      object-fit: cover;
-      object-position: center top;
-      border: 1px solid rgba(255,255,255,0.12);
-      margin-bottom: 1.5rem;
-      display: block;
-      transition: border-color 0.3s ease;
-    }
-    .bio-image:hover {
-      border-color: rgba(196,30,58,0.5);
-    }
-    .bio-section p {
-      margin-bottom: 1.1rem;
-      font-size: 0.96rem;
-      color: rgba(255,255,255,0.82);
-      line-height: 1.85;
-    }
+    .leadership { background: var(--navy); color: var(--white); }
+    .leadership .section-title { color: var(--white); }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3.5rem; margin-top: 2.5rem; }
+    .bio-section { text-align: left; }
+    .bio-section h2 { font-size: 1.2rem; font-weight: 400; letter-spacing: 1px; color: var(--white); margin-bottom: 1.25rem; }
+    .bio-image { width: 100%; max-width: 220px; height: 280px; object-fit: cover; object-position: center top; border: 1px solid rgba(255,255,255,0.12); margin-bottom: 1.5rem; display: block; transition: border-color 0.3s ease; }
+    .bio-image:hover { border-color: rgba(196,30,58,0.5); }
+    .bio-section p { margin-bottom: 1.1rem; font-size: 0.96rem; color: rgba(255,255,255,0.82); line-height: 1.85; }
 
-    /* ── CONTACT ── */
-    .contact {
-      background: var(--light-gray);
-      text-align: center;
-    }
-    .contact-info {
-      margin-top: 1.5rem;
-    }
-    .contact-item {
-      margin-bottom: 0.75rem;
-      font-size: 1rem;
-    }
-    .contact-item a {
-      color: var(--navy);
-      text-decoration: none;
-      transition: color 0.3s;
-      border-bottom: 1px solid transparent;
-    }
-    .contact-item a:hover {
-      color: var(--red);
-      border-bottom-color: var(--red);
-    }
-    .contact-note {
-      margin-top: 2rem;
-      font-size: 0.85rem;
-      color: var(--text-gray);
-      font-style: italic;
-    }
+    .contact { background: var(--light-gray); text-align: center; }
+    .contact-info { margin-top: 1.5rem; }
+    .contact-item { margin-bottom: 0.75rem; font-size: 1rem; }
+    .contact-item a { color: var(--navy); text-decoration: none; transition: color 0.3s; border-bottom: 1px solid transparent; }
+    .contact-item a:hover { color: var(--red); border-bottom-color: var(--red); }
+    .contact-note { margin-top: 2rem; font-size: 0.85rem; color: var(--text-gray); font-style: italic; }
 
-    /* ── LEGAL DISCLAIMER ── */
-    .disclaimer {
-      background: var(--navy);
-      padding: 3rem 2rem;
-    }
-    .disclaimer-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 2rem;
-    }
-    .disclaimer-inner p {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.4);
-      line-height: 1.8;
-      margin-bottom: 0.75rem;
-    }
+    .disclaimer { background: var(--navy); padding: 3rem 2rem; }
+    .disclaimer-inner { max-width: 900px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; }
+    .disclaimer-inner p { font-size: 0.78rem; color: rgba(255,255,255,0.4); line-height: 1.8; margin-bottom: 0.75rem; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--navy);
-      color: rgba(255,255,255,0.45);
-      padding: 2.5rem 2rem;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-    .footer-logo .logo-dot {
-      background: var(--red);
-    }
-    .footer-logo .logo-text {
-      color: var(--white);
-      font-size: 0.8rem;
-    }
-    .footer-text {
-      font-size: 0.78rem;
-    }
+    footer { background: var(--navy); color: rgba(255,255,255,0.45); padding: 2.5rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.08); }
+    .footer-logo { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1rem; }
+    .footer-logo .logo-dot { background: var(--red); }
+    .footer-logo .logo-text { color: var(--white); font-size: 0.8rem; }
+    .footer-text { font-size: 0.78rem; }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      .hamburger {
-        display: flex;
-      }
-      .hero h1 {
-        letter-spacing: 3px;
-      }
-      .hero h1 span {
-        letter-spacing: 5px;
-      }
-      .familybank-grid {
-        grid-template-columns: 1fr;
-      }
-      .team-grid {
-        grid-template-columns: 1fr;
-      }
-      .bio-image {
-        max-width: 180px;
-        height: 230px;
-      }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero h1 { letter-spacing: 3px; }
+      .hero h1 span { letter-spacing: 5px; }
+      .familybank-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .bio-image { max-width: 180px; height: 230px; }
     }
 
     /* ── PASSWORD OVERLAY ── */
@@ -606,14 +222,11 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Open menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="#about" onclick="closeMobileMenu()">About</a>
     <a href="#familybank" onclick="closeMobileMenu()">The Family Bank</a>
@@ -635,21 +248,42 @@
       mobileMenu.classList.remove('open');
     }
 
-    // TEMP: disable password overlay completely
+    // Password overlay
     (function() {
+      const correctPassword = 'demiroren2026';
       const overlay = document.getElementById('passwordOverlay');
-      if (overlay) {
+      const form = document.getElementById('passwordForm');
+      const input = document.getElementById('passwordInput');
+      const error = document.getElementById('errorMessage');
+
+      if (sessionStorage.getItem('dnc_authenticated') === 'true') {
         overlay.style.display = 'none';
+        return;
       }
-    })();  </script>
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (input.value === correctPassword) {
+          sessionStorage.setItem('dnc_authenticated', 'true');
+          overlay.style.transition = 'opacity 0.4s ease';
+          overlay.style.opacity = '0';
+          setTimeout(() => { overlay.style.display = 'none'; }, 400);
+        } else {
+          error.style.display = 'block';
+          input.value = '';
+          input.focus();
+          setTimeout(() => { error.style.display = 'none'; }, 3000);
+        }
+      });
+
+      input.focus();
+    })();
+  </script>
 
   <!-- ── HERO ── -->
   <section class="hero">
     <div class="hero-content">
-      <h1>
-        Demiroren
-        <span>Nordic Capital</span>
-      </h1>
+      <h1>Demiroren<span>Nordic Capital</span></h1>
       <p class="hero-tagline">A European family investment platform. Built from legacy. Structured for permanence.</p>
       <div class="hero-rule"></div>
     </div>
@@ -736,7 +370,6 @@
       <span class="eyebrow reveal" style="color:rgba(196,30,58,0.9);">The Principals</span>
       <h2 class="section-title reveal reveal-delay-1">Leadership</h2>
       <div class="team-grid">
-
         <section class="bio-section reveal reveal-delay-2">
           <h2>Tayfun Demiroren</h2>
           <img src="./IMG_1865.jpeg" alt="Tayfun Demiroren" class="bio-image">
@@ -744,9 +377,62 @@
           <p>Demiroren Nordic Capital is the direct extension of that philosophy. Founded by Tayfun as a family investment platform, DNC deploys capital across real estate, insurance, infrastructure, and hospitality — with operations anchored in Switzerland, the United Kingdom, and Bermuda. The platform is built for permanence: structured to preserve, grow, and transmit capital with the same long-horizon discipline that has defined the Demiroren name for nearly seven decades. His earlier work in European real estate, including the initiation of Upside Berlin in 2020, reflects the scale and selectivity that continues to define DNC's approach.</p>
           <p>Tayfun is married with three children and is based in London.</p>
         </section>
-
         <section class="bio-section reveal reveal-delay-3">
           <h2>Reyhan Demiroren</h2>
           <img src="./IMG_1944.jpeg" alt="Reyhan Demiroren" class="bio-image">
           <p>Reyhan Demiroren is the daughter of the late Ayhan Bozkurt, founder and chairman of Bozkurt Holding — a Turkish business group with established operations across healthcare, insurance, and distribution. Her upbringing within a family defined by entrepreneurial discipline and long-horizon thinking gave her an early fluency in the language of business building that she carries forward today.</p>
-          <p>Alongside her husband Tayfun, Reyhan shapes the tone and values of Demiroren Nordic Capital, bringing the family’s nordic flavor and grounded, long-term perspective to the platform. She is a mother of three and is based in London.
+          <p>Alongside her husband Tayfun, Reyhan shapes the tone and values of Demiroren Nordic Capital, bringing the family's nordic flavor and grounded, long-term perspective to the platform. She is a mother of three and is based in London.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <span class="eyebrow reveal">Get in Touch</span>
+      <h2 class="section-title reveal reveal-delay-1">Contact</h2>
+      <div class="contact-info reveal reveal-delay-2">
+        <p class="contact-item">For investment, partnership, or media enquiries:</p>
+        <p class="contact-item" style="margin-top:0.75rem;">
+          <a href="mailto:info@demirorennordiccapital.com">info@demirorennordiccapital.com</a>
+        </p>
+      </div>
+      <p class="contact-note reveal reveal-delay-3">All enquiries are treated with strict confidentiality.</p>
+    </div>
+  </section>
+
+  <!-- ── LEGAL DISCLAIMER ── -->
+  <div class="disclaimer">
+    <div class="disclaimer-inner">
+      <p><strong style="color:rgba(255,255,255,0.55);font-weight:400;">Important Notice.</strong> This website is for informational purposes only and does not constitute an offer, solicitation, or recommendation to buy or sell any security or investment product. Nothing contained herein should be construed as investment, legal, tax, or financial advice.</p>
+      <p>Demiroren Nordic Capital and its subsidiaries are private entities. References to investment activities, vehicles, and strategies on this website are provided for background purposes only and are not directed at any person in any jurisdiction where such distribution would be contrary to local law or regulation.</p>
+      <p>Past performance is not indicative of future results. All investments involve risk, including the possible loss of principal.</p>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-logo">
+      <div class="logo-dot"></div>
+      <span class="logo-text">Demiroren Nordic Capital</span>
+    </div>
+    <p class="footer-text">&copy; 2025 Demiroren Nordic Capital. All rights reserved.</p>
+  </footer>
+
+  <!-- ── SCROLL REVEAL ── -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
