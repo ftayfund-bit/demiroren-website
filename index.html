@@ -502,13 +502,281 @@
         height: 230px;
       }
     }
+
+    /* ── PASSWORD OVERLAY ── */
+    #passwordOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(26,35,50,0.97);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    #passwordCard {
+      background: #ffffff;
+      padding: 3rem;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    #passwordCard h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: #1A2332;
+      letter-spacing: 1px;
+      font-weight: 400;
+    }
+    #passwordCard p {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #999;
+      font-style: italic;
+    }
+    #passwordForm {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    #passwordInput {
+      padding: 0.75rem 1rem;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      font-family: Georgia,'Times New Roman',serif;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    #passwordInput:focus {
+      border-color: #1A2332;
+    }
+    #passwordSubmit {
+      padding: 0.75rem;
+      background: #1A2332;
+      color: #ffffff;
+      border: none;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      font-family: Georgia,'Times New Roman',serif;
+      text-transform: uppercase;
+      transition: background 0.3s;
+    }
+    #passwordSubmit:hover {
+      background: #121827;
+    }
+    #errorMessage {
+      color: #C41E3A;
+      font-size: 0.85rem;
+      text-align: center;
+      display: none;
+    }
   </style>
 </head>
 <body>
 
   <!-- ── PASSWORD PROTECTION ── -->
-  <div id="passwordOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(26,35,50,0.97);display:flex;align-items:center;justify-content:center;z-index:10000;">
-    <div style="background:white;padding:3rem;max-width:400px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.4);">
+  <div id="passwordOverlay">
+    <div id="passwordCard">
       <div style="text-align:center;margin-bottom:2rem;">
         <div style="width:12px;height:12px;background:#C41E3A;border-radius:50%;margin:0 auto 1.25rem;"></div>
-        <h2 style="margin:0;font-size:1.3rem;color:#1A2
+        <h2>Demiroren Nordic Capital</h2>
+        <p>Private Access</p>
+      </div>
+      <form id="passwordForm">
+        <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="off">
+        <button type="submit" id="passwordSubmit">Access</button>
+        <div id="errorMessage">Incorrect password. Please try again.</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── NAVIGATION ── -->
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <div class="logo-dot"></div>
+        <span class="logo-text">Demiroren Nordic Capital</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#familybank">The Family Bank</a></li>
+        <li><a href="#divisions">Investment Vehicles</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMobileMenu()">About</a>
+    <a href="#familybank" onclick="closeMobileMenu()">The Family Bank</a>
+    <a href="#divisions" onclick="closeMobileMenu()">Investment Vehicles</a>
+    <a href="#leadership" onclick="closeMobileMenu()">Leadership</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  </div>
+
+  <script>
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMobileMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+
+    // Password overlay
+    (function() {
+      const correctPassword = 'demiroren2026';
+      const overlay = document.getElementById('passwordOverlay');
+      const form = document.getElementById('passwordForm');
+      const input = document.getElementById('passwordInput');
+      const error = document.getElementById('errorMessage');
+
+      // If already authenticated in this tab, hide overlay
+      if (sessionStorage.getItem('dnc_authenticated') === 'true') {
+        overlay.style.display = 'none';
+        return;
+      }
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (input.value === correctPassword) {
+          sessionStorage.setItem('dnc_authenticated', 'true');
+          overlay.style.transition = 'opacity 0.4s ease';
+          overlay.style.opacity = '0';
+          setTimeout(() => {
+            overlay.style.display = 'none';
+          }, 400);
+        } else {
+          error.style.display = 'block';
+          input.value = '';
+          input.focus();
+          setTimeout(() => {
+            error.style.display = 'none';
+          }, 3000);
+        }
+      });
+
+      // Focus input when page loads
+      input.focus();
+    })();
+  </script>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>
+        Demiroren
+        <span>Nordic Capital</span>
+      </h1>
+      <p class="hero-tagline">A European family investment platform. Built from legacy. Structured for permanence.</p>
+      <div class="hero-rule"></div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about" class="about">
+    <div class="container">
+      <span class="eyebrow reveal">The Platform</span>
+      <h2 class="section-title reveal reveal-delay-1">About</h2>
+      <div class="about-text">
+        <p class="reveal reveal-delay-2">Demiroren Nordic Capital is a European family investment platform deploying patient capital across real estate, insurance, infrastructure, and hospitality. We are not a fund. We are a permanent capital vehicle, shaped by a family tradition of building businesses across generations.</p>
+        <p class="reveal reveal-delay-3">We take a long-term view on assets that require operational expertise and the kind of commitment that pure financial sponsors cannot provide. Where others manage to a fund cycle, we manage to a family horizon.</p>
+        <p class="reveal reveal-delay-4">Our multi-jurisdictional structure spans Switzerland, the United Kingdom, and Bermuda — enabling disciplined capital deployment across European and international markets.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAMILY BANK ── -->
+  <section id="familybank" class="familybank">
+    <div class="container">
+      <span class="eyebrow reveal">Our Philosophy</span>
+      <h2 class="section-title reveal reveal-delay-1">The Family Bank</h2>
+      <p class="familybank-intro reveal reveal-delay-2">The dot in our mark represents a simple idea: one source of capital, deployed with discipline across multiple businesses.</p>
+      <div class="familybank-grid">
+        <div class="familybank-item reveal reveal-delay-1">
+          <h3>Patient Capital</h3>
+          <p>DNC is not a fund. There are no LPs to return capital to, no fund life to manage around. We deploy family capital on family timescales — which means we can say no to good deals that don't fit, and yes to complex situations that require time.</p>
+        </div>
+        <div class="familybank-item reveal reveal-delay-2">
+          <h3>Platform, Not Portfolio</h3>
+          <p>Our five divisions are not portfolio companies waiting to be sold. They are operating businesses that share infrastructure, governance standards, and a common owner. Each runs independently; all benefit from the platform.</p>
+        </div>
+        <div class="familybank-item reveal reveal-delay-3">
+          <h3>Conservative by Design</h3>
+          <p>We underwrite to downside scenarios. We use moderate leverage. We stress test. Family capital means we don't need to swing for the fences — consistent, defensible returns compound better than volatile ones.</p>
+        </div>
+        <div class="familybank-item reveal reveal-delay-4">
+          <h3>Transparent Governance</h3>
+          <p>Related-party transactions between divisions happen at independently appraised values with full disclosure. We manage conflicts by being transparent about them, not by pretending they don't exist.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DIVISIONS ── -->
+  <section id="divisions" class="divisions">
+    <div class="container">
+      <span class="eyebrow reveal">Our Businesses</span>
+      <h2 class="section-title reveal reveal-delay-1">Investment Vehicles</h2>
+      <div class="divisions-grid">
+        <div class="division-card reveal reveal-delay-1">
+          <h3 class="division-name">Velorin Fund</h3>
+          <div class="division-type">Yield Strategy</div>
+          <p class="division-desc">German residential property acquisitions targeting stable yields with quarterly distributions and conservative leverage.</p>
+        </div>
+        <div class="division-card reveal reveal-delay-2">
+          <h3 class="division-name">Tierra Fina</h3>
+          <div class="division-type">Development</div>
+          <p class="division-desc">Residential development projects across Germany and the United Kingdom, creating pipeline through value-add repositioning.</p>
+        </div>
+        <div class="division-card reveal reveal-delay-3">
+          <h3 class="division-name">Norven Insurance</h3>
+          <div class="division-type">Insurance Platform</div>
+          <p class="division-desc">Multi-line insurance operations including PPLI, aviation captives, and commercial lines through regulated entities.</p>
+        </div>
+        <div class="division-card reveal reveal-delay-4">
+          <h3 class="division-name">Norclime</h3>
+          <div class="division-type">Climate Infrastructure</div>
+          <p class="division-desc">Sustainable infrastructure investments targeting climate transition assets meeting ESG mandates.</p>
+        </div>
+        <div class="division-card reveal reveal-delay-1">
+          <h3 class="division-name">Costa Nova</h3>
+          <div class="division-type">Hospitality</div>
+          <p class="division-desc">Lifestyle hospitality assets including boutique hotels and experiential destinations across European markets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LEADERSHIP ── -->
+  <section id="leadership" class="leadership">
+    <div class="container">
+      <span class="eyebrow reveal" style="color:rgba(196,30,58,0.9);">The Principals</span>
+      <h2 class="section-title reveal reveal-delay-1">Leadership</h2>
+      <div class="team-grid">
+
+        <section class="bio-section reveal reveal-delay-2">
+          <h2>Tayfun Demiroren</h2>
+          <img src="./IMG_1865.jpeg" alt="Tayfun Demiroren" class="bio-image">
+          <p>Tayfun Demiroren is a European investor and entrepreneur operating at the intersection of family legacy and institutional capital. As an equal shareholder in Demiroren Holding — a diversified family conglomerate founded in 1956 across energy, media, retail, and infrastructure — he carries forward a tradition built on patience, conviction, and the belief that enduring businesses are measured in generations, not cycles.</p>
+          <p>Demiroren Nordic Capital is the direct extension of that philosophy. Founded by Tayfun as a family investment platform, DNC deploys capital across real estate, insurance, infrastructure, and hospitality — with operations anchored in Switzerland, the United Kingdom, and Bermuda. The platform is built for permanence: structured to preserve, grow, and transmit capital with the same long-horizon discipline that has defined the Demiroren name for nearly seven decades. His earlier work in European real estate, including the initiation of Upside Berlin in 2020, reflects the scale and selectivity that continues to define DNC's approach.</p>
+          <p>Tayfun is married with three children and is based in London.</p>
+        </section>
+
+        <section class="bio-section reveal reveal-delay-3">
+          <h2>Reyhan Demiroren</h2>
+          <img src="./IMG_1944.jpeg" alt="Reyhan Demiroren" class="bio-image">
+          <p>Reyhan Demiroren is the daughter of the late Ayhan Bozkurt, founder and chairman of Bozkurt Holding — a Turkish business group with established operations across healthcare, insurance, and distribution. Her upbringing within a family defined by entrepreneurial discipline and long-horizon thinking gave her an early fluency in the language of business building that she carries forward today.</p>
+          <p>Alongside her husband Tayfun, Reyhan shapes the tone and values of Demiroren Nordic Capital, bringing the family’s nordic flavor and grounded, long-term perspective to the platform. She is a mother of three and is based in London.
