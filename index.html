@@ -1,37 +1,57 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demirøren Nordic Capital</title>
+  <title>Demiroren Nordic Capital</title>
+  <meta name="description" content="Demiroren Nordic Capital is a European family investment platform deploying patient capital across real estate, insurance, infrastructure, and hospitality.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='10' fill='%23C41E3A'/></svg>">
   <style>
     :root {
-      --black: #1a1a1a;
-      --swiss-red: #C41E3A;
+      --navy: #1A2332;
+      --red: #C41E3A;
       --white: #ffffff;
       --light-gray: #f8f9fa;
       --medium-gray: #e0e0e0;
       --text-gray: #6c757d;
+      --dark-text: #1A2332;
     }
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: Georgia, 'Times New Roman', serif;
       line-height: 1.7;
-      color: var(--black);
+      color: var(--dark-text);
       background: var(--white);
     }
-    /* Navigation */
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── NAVIGATION ── */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(255, 255, 255, 0.98);
+      background: rgba(255,255,255,0.98);
       border-bottom: 1px solid var(--medium-gray);
       z-index: 1000;
       backdrop-filter: blur(10px);
@@ -49,13 +69,14 @@
       align-items: center;
       gap: 0.75rem;
       text-decoration: none;
-      color: var(--black);
+      color: var(--navy);
     }
     .logo-dot {
       width: 10px;
       height: 10px;
-      background: var(--black);
+      background: var(--navy);
       border-radius: 50%;
+      flex-shrink: 0;
     }
     .logo-text {
       font-size: 0.9rem;
@@ -69,16 +90,76 @@
       gap: 2.5rem;
     }
     .nav-links a {
-      color: var(--black);
+      color: var(--navy);
       text-decoration: none;
       font-size: 0.9rem;
       letter-spacing: 0.5px;
       transition: color 0.3s;
     }
     .nav-links a:hover {
-      color: var(--swiss-red);
+      color: var(--red);
     }
-    /* Hero Section */
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--navy);
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.99);
+      border-bottom: 1px solid var(--medium-gray);
+      z-index: 999;
+      padding: 1.5rem 2rem;
+      flex-direction: column;
+      gap: 1.25rem;
+      backdrop-filter: blur(10px);
+    }
+    .mobile-menu.open {
+      display: flex;
+    }
+    .mobile-menu a {
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid var(--medium-gray);
+    }
+    .mobile-menu a:last-child {
+      border-bottom: none;
+    }
+    .mobile-menu a:hover {
+      color: var(--red);
+    }
+
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -87,7 +168,7 @@
       align-items: center;
       text-align: center;
       padding: 8rem 2rem 4rem;
-      background: linear-gradient(135deg, var(--black) 0%, #2a3441 100%);
+      background: linear-gradient(160deg, var(--navy) 0%, #2a3b52 60%, #1e2d3f 100%);
       color: var(--white);
       position: relative;
       overflow: hidden;
@@ -98,11 +179,12 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 400px;
-      height: 400px;
-      border: 2px solid rgba(255, 255, 255, 0.05);
+      width: 500px;
+      height: 500px;
+      border: 1px solid rgba(255,255,255,0.04);
       border-radius: 50%;
       pointer-events: none;
+      animation: pulse 6s ease-in-out infinite;
     }
     .hero::after {
       content: '';
@@ -110,15 +192,25 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 300px;
-      height: 300px;
-      border: 1px solid rgba(255, 255, 255, 0.03);
+      width: 320px;
+      height: 320px;
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 50%;
       pointer-events: none;
+      animation: pulse 6s ease-in-out infinite 1s;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      50% { transform: translate(-50%, -50%) scale(1.04); opacity: 0.6; }
     }
     .hero-content {
       position: relative;
       z-index: 1;
+      animation: heroFade 1.2s ease forwards;
+    }
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .hero h1 {
       font-size: clamp(2.5rem, 6vw, 4rem);
@@ -136,18 +228,20 @@
     }
     .hero-tagline {
       font-size: 1.05rem;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255,255,255,0.7);
       margin-top: 2rem;
       font-style: italic;
-      max-width: 500px;
+      max-width: 520px;
+      line-height: 1.8;
     }
     .hero-rule {
       width: 50px;
       height: 2px;
-      background: var(--swiss-red);
+      background: var(--red);
       margin: 2.5rem auto 0;
     }
-    /* Sections */
+
+    /* ── SECTIONS ── */
     section {
       padding: 5rem 2rem;
     }
@@ -161,7 +255,16 @@
       margin-bottom: 1.5rem;
       letter-spacing: 1px;
     }
-    /* About Section */
+    .eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    /* ── ABOUT ── */
     .about {
       background: var(--light-gray);
     }
@@ -169,7 +272,8 @@
       margin-bottom: 1.25rem;
       font-size: 1.05rem;
     }
-    /* The Family Bank Section */
+
+    /* ── FAMILY BANK ── */
     .familybank {
       background: var(--white);
     }
@@ -187,7 +291,7 @@
     .familybank-item {
       padding: 2rem;
       background: var(--light-gray);
-      border-left: 3px solid var(--swiss-red);
+      border-left: 3px solid var(--red);
     }
     .familybank-item h3 {
       font-size: 1.1rem;
@@ -200,7 +304,8 @@
       color: var(--text-gray);
       line-height: 1.8;
     }
-    /* Divisions Section */
+
+    /* ── DIVISIONS ── */
     .divisions {
       background: var(--white);
     }
@@ -214,10 +319,26 @@
       padding: 2rem;
       border: 1px solid var(--medium-gray);
       transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .division-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--red);
+      transition: width 0.3s ease;
     }
     .division-card:hover {
-      border-color: var(--black);
-      transform: translateY(-2px);
+      border-color: var(--navy);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(26,35,50,0.08);
+    }
+    .division-card:hover::after {
+      width: 100%;
     }
     .division-name {
       font-size: 1.15rem;
@@ -229,7 +350,7 @@
       font-size: 0.75rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--swiss-red);
+      color: var(--red);
       margin-bottom: 1rem;
     }
     .division-desc {
@@ -237,9 +358,10 @@
       color: var(--text-gray);
       line-height: 1.6;
     }
-    /* Leadership Section */
+
+    /* ── LEADERSHIP ── */
     .leadership {
-      background: var(--black);
+      background: var(--navy);
       color: var(--white);
     }
     .leadership .section-title {
@@ -247,29 +369,42 @@
     }
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3.5rem;
       margin-top: 2.5rem;
-      max-width: 900px;
     }
     .bio-section {
       text-align: left;
     }
+    .bio-section h2 {
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
     .bio-image {
-      width: 180px;
-      height: 230px;
+      width: 100%;
+      max-width: 220px;
+      height: 280px;
       object-fit: cover;
       object-position: center top;
-      border: 2px solid rgba(255,255,255,0.1);
-      margin-bottom: 1.25rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      margin-bottom: 1.5rem;
       display: block;
+      transition: border-color 0.3s ease;
+    }
+    .bio-image:hover {
+      border-color: rgba(196,30,58,0.5);
     }
     .bio-section p {
-      margin-bottom: 1.25rem;
-      font-size: 0.98rem;
-      color: rgba(255,255,255,0.85);
+      margin-bottom: 1.1rem;
+      font-size: 0.96rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.85;
     }
-    /* Contact Section */
+
+    /* ── CONTACT ── */
     .contact {
       background: var(--light-gray);
       text-align: center;
@@ -282,19 +417,47 @@
       font-size: 1rem;
     }
     .contact-item a {
-      color: var(--black);
+      color: var(--navy);
       text-decoration: none;
       transition: color 0.3s;
+      border-bottom: 1px solid transparent;
     }
     .contact-item a:hover {
-      color: var(--swiss-red);
+      color: var(--red);
+      border-bottom-color: var(--red);
     }
-    /* Footer */
+    .contact-note {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: var(--text-gray);
+      font-style: italic;
+    }
+
+    /* ── LEGAL DISCLAIMER ── */
+    .disclaimer {
+      background: var(--navy);
+      padding: 3rem 2rem;
+    }
+    .disclaimer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 2rem;
+    }
+    .disclaimer-inner p {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.8;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── FOOTER ── */
     footer {
-      background: var(--black);
-      color: rgba(255,255,255,0.5);
+      background: var(--navy);
+      color: rgba(255,255,255,0.45);
       padding: 2.5rem 2rem;
       text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.08);
     }
     .footer-logo {
       display: flex;
@@ -304,19 +467,23 @@
       margin-bottom: 1rem;
     }
     .footer-logo .logo-dot {
-      background: var(--swiss-red);
+      background: var(--red);
     }
     .footer-logo .logo-text {
       color: var(--white);
       font-size: 0.8rem;
     }
     .footer-text {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
     }
-    /* Responsive */
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav-links {
         display: none;
+      }
+      .hamburger {
+        display: flex;
       }
       .hero h1 {
         letter-spacing: 3px;
@@ -330,21 +497,32 @@
       .team-grid {
         grid-template-columns: 1fr;
       }
+      .bio-image {
+        max-width: 180px;
+        height: 230px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Password Protection -->
-  <div id="passwordOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: flex; align-items: center; justify-content: center; z-index: 10000;">
-    <div style="background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); max-width: 400px; width: 90%;">
-      <div style="text-align: center; margin-bottom: 2rem;">
-        <div style="width: 12px; height: 12px; background: #C41E3A; border-radius: 50%; margin: 0 auto 1rem;"></div>
-        <h2 style="margin: 0; font-size: 1.5rem; color: #1a1a1a;">Demirøren Nordic Capital</h2>
+
+  <!-- ── PASSWORD PROTECTION ── -->
+  <div id="passwordOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(26,35,50,0.97);display:flex;align-items:center;justify-content:center;z-index:10000;">
+    <div style="background:white;padding:3rem;max-width:400px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.4);">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <div style="width:12px;height:12px;background:#C41E3A;border-radius:50%;margin:0 auto 1.25rem;"></div>
+        <h2 style="margin:0;font-size:1.3rem;color:#1A2332;letter-spacing:1px;font-weight:400;">Demiroren Nordic Capital</h2>
+        <p style="margin-top:0.5rem;font-size:0.85rem;color:#999;font-style:italic;">Private Access</p>
       </div>
-      <form id="passwordForm" style="display: flex; flex-direction: column; gap: 1rem;">
-        <input type="password" id="passwordInput" placeholder="Enter password" style="padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; font-family: Georgia, 'Times New Roman', serif;" autocomplete="off" />
-        <button type="submit" style="padding: 0.75rem; background: #C41E3A; color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; font-family: Georgia, 'Times New Roman', serif; transition: background 0.3s;">Access</button>
-        <div id="errorMessage" style="color: #C41E3A; font-size: 0.875rem; text-align: center; display: none;">Incorrect password</div>
+      <form id="passwordForm" style="display:flex;flex-direction:column;gap:1rem;">
+        <input type="password" id="passwordInput" placeholder="Enter password"
+          style="padding:0.75rem 1rem;border:1px solid #ddd;font-size:1rem;font-family:Georgia,'Times New Roman',serif;outline:none;transition:border-color 0.3s;"
+          autocomplete="off"/>
+        <button type="submit"
+          style="padding:0.75rem;background:#1A2332;color:white;border:none;font-size:0.9rem;letter-spacing:1px;cursor:pointer;font-family:Georgia,'Times New Roman',serif;text-transform:uppercase;transition:background 0.3s;">
+          Access
+        </button>
+        <div id="errorMessage" style="color:#C41E3A;font-size:0.85rem;text-align:center;display:none;">Incorrect password. Please try again.</div>
       </form>
     </div>
   </div>
@@ -355,39 +533,34 @@
       const form = document.getElementById('passwordForm');
       const input = document.getElementById('passwordInput');
       const error = document.getElementById('errorMessage');
-
       if (sessionStorage.getItem('authenticated') === 'true') {
         overlay.style.display = 'none';
         return;
       }
-
       form.addEventListener('submit', function(e) {
         e.preventDefault();
-
         if (input.value === correctPassword) {
           sessionStorage.setItem('authenticated', 'true');
-          overlay.style.display = 'none';
+          overlay.style.opacity = '0';
+          overlay.style.transition = 'opacity 0.4s ease';
+          setTimeout(() => overlay.style.display = 'none', 400);
         } else {
           error.style.display = 'block';
           input.value = '';
           input.focus();
-
-          setTimeout(function() {
-            error.style.display = 'none';
-          }, 3000);
+          setTimeout(() => error.style.display = 'none', 3000);
         }
       });
-
       input.focus();
     })();
   </script>
 
-  <!-- Navigation -->
+  <!-- ── NAVIGATION ── -->
   <nav>
     <div class="nav-container">
       <a href="#" class="logo">
         <div class="logo-dot"></div>
-        <span class="logo-text">Demirøren Nordic Capital</span>
+        <span class="logo-text">Demiroren Nordic Capital</span>
       </a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
@@ -396,56 +569,81 @@
         <li><a href="#leadership">Leadership</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMobileMenu()">About</a>
+    <a href="#familybank" onclick="closeMobileMenu()">The Family Bank</a>
+    <a href="#divisions" onclick="closeMobileMenu()">Investment Vehicles</a>
+    <a href="#leadership" onclick="closeMobileMenu()">Leadership</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  </div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMobileMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+  </script>
+
+  <!-- ── HERO ── -->
   <section class="hero">
     <div class="hero-content">
       <h1>
-        Demirøren
+        Demiroren
         <span>Nordic Capital</span>
       </h1>
-      <p class="hero-tagline">A sophisticated family investment platform deploying patient capital across European real assets.</p>
+      <p class="hero-tagline">A European family investment platform. Built from legacy. Structured for permanence.</p>
       <div class="hero-rule"></div>
     </div>
   </section>
 
-  <!-- About -->
+  <!-- ── ABOUT ── -->
   <section id="about" class="about">
     <div class="container">
-      <h2 class="section-title">About</h2>
+      <span class="eyebrow reveal">The Platform</span>
+      <h2 class="section-title reveal reveal-delay-1">About</h2>
       <div class="about-text">
-        <p>Demirøren Nordic Capital is a European family investment platform combining family office stability with institutional discipline across real estate, insurance, and climate infrastructure.</p>
-        <p>We take a long-term view on assets that require operational expertise and patient capital — the kind of commitment that pure financial sponsors cannot provide.</p>
-        <p>Our multi-jurisdictional structure spans Switzerland, Liechtenstein, Luxembourg, Germany, and the United Kingdom, enabling efficient capital deployment across European markets.</p>
+        <p class="reveal reveal-delay-2">Demiroren Nordic Capital is a European family investment platform deploying patient capital across real estate, insurance, infrastructure, and hospitality. We are not a fund. We are a permanent capital vehicle, shaped by a family tradition of building businesses across generations.</p>
+        <p class="reveal reveal-delay-3">We take a long-term view on assets that require operational expertise and the kind of commitment that pure financial sponsors cannot provide. Where others manage to a fund cycle, we manage to a family horizon.</p>
+        <p class="reveal reveal-delay-4">Our multi-jurisdictional structure spans Switzerland, the United Kingdom, and Bermuda — enabling disciplined capital deployment across European and international markets.</p>
       </div>
     </div>
   </section>
 
-  <!-- The Family Bank -->
+  <!-- ── FAMILY BANK ── -->
   <section id="familybank" class="familybank">
     <div class="container">
-      <h2 class="section-title">The Family Bank</h2>
-      <p class="familybank-intro">The dot in our mark represents a simple idea: one source of capital, deployed with discipline across multiple businesses.</p>
-
+      <span class="eyebrow reveal">Our Philosophy</span>
+      <h2 class="section-title reveal reveal-delay-1">The Family Bank</h2>
+      <p class="familybank-intro reveal reveal-delay-2">The dot in our mark represents a simple idea: one source of capital, deployed with discipline across multiple businesses.</p>
       <div class="familybank-grid">
-        <div class="familybank-item">
+        <div class="familybank-item reveal reveal-delay-1">
           <h3>Patient Capital</h3>
           <p>DNC is not a fund. There are no LPs to return capital to, no fund life to manage around. We deploy family capital on family timescales — which means we can say no to good deals that don't fit, and yes to complex situations that require time.</p>
         </div>
-
-        <div class="familybank-item">
+        <div class="familybank-item reveal reveal-delay-2">
           <h3>Platform, Not Portfolio</h3>
-          <p>Our five divisions are not portfolio companies waiting to be sold. They are operating businesses that share infrastructure, governance standards, and a common owner. Each runs independently, all benefit from the platform.</p>
+          <p>Our five divisions are not portfolio companies waiting to be sold. They are operating businesses that share infrastructure, governance standards, and a common owner. Each runs independently; all benefit from the platform.</p>
         </div>
-
-        <div class="familybank-item">
+        <div class="familybank-item reveal reveal-delay-3">
           <h3>Conservative by Design</h3>
           <p>We underwrite to downside scenarios. We use moderate leverage. We stress test. Family capital means we don't need to swing for the fences — consistent, defensible returns compound better than volatile ones.</p>
         </div>
-
-        <div class="familybank-item">
+        <div class="familybank-item reveal reveal-delay-4">
           <h3>Transparent Governance</h3>
           <p>Related-party transactions between divisions happen at independently appraised values with full disclosure. We manage conflicts by being transparent about them, not by pretending they don't exist.</p>
         </div>
@@ -453,32 +651,33 @@
     </div>
   </section>
 
-  <!-- Divisions -->
+  <!-- ── DIVISIONS ── -->
   <section id="divisions" class="divisions">
     <div class="container">
-      <h2 class="section-title">Investment Vehicles</h2>
+      <span class="eyebrow reveal">Our Businesses</span>
+      <h2 class="section-title reveal reveal-delay-1">Investment Vehicles</h2>
       <div class="divisions-grid">
-        <div class="division-card">
+        <div class="division-card reveal reveal-delay-1">
           <h3 class="division-name">Velorin Fund</h3>
           <div class="division-type">Yield Strategy</div>
           <p class="division-desc">German residential property acquisitions targeting stable yields with quarterly distributions and conservative leverage.</p>
         </div>
-        <div class="division-card">
+        <div class="division-card reveal reveal-delay-2">
           <h3 class="division-name">Tierra Fina</h3>
           <div class="division-type">Development</div>
           <p class="division-desc">Residential development projects across Germany and the United Kingdom, creating pipeline through value-add repositioning.</p>
         </div>
-        <div class="division-card">
+        <div class="division-card reveal reveal-delay-3">
           <h3 class="division-name">Norven Insurance</h3>
           <div class="division-type">Insurance Platform</div>
           <p class="division-desc">Multi-line insurance operations including PPLI, aviation captives, and commercial lines through regulated entities.</p>
         </div>
-        <div class="division-card">
+        <div class="division-card reveal reveal-delay-4">
           <h3 class="division-name">Norclime</h3>
           <div class="division-type">Climate Infrastructure</div>
           <p class="division-desc">Sustainable infrastructure investments targeting climate transition assets meeting ESG mandates.</p>
         </div>
-        <div class="division-card">
+        <div class="division-card reveal reveal-delay-1">
           <h3 class="division-name">Costa Nova</h3>
           <div class="division-type">Hospitality</div>
           <p class="division-desc">Lifestyle hospitality assets including boutique hotels and experiential destinations across European markets.</p>
@@ -487,59 +686,78 @@
     </div>
   </section>
 
-  <!-- Leadership / Biosektion -->
+  <!-- ── LEADERSHIP ── -->
   <section id="leadership" class="leadership">
     <div class="container">
-      <h2 class="section-title">Leadership</h2>
+      <span class="eyebrow reveal" style="color:rgba(196,30,58,0.9);">The Principals</span>
+      <h2 class="section-title reveal reveal-delay-1">Leadership</h2>
       <div class="team-grid">
 
-        <section class="bio-section">
+        <section class="bio-section reveal reveal-delay-2">
           <h2>Tayfun Demiroren</h2>
           <img src="./IMG_1865.jpeg" alt="Tayfun Demiroren" class="bio-image">
-          <p>
-            Tayfun Demiroren is a European investor and entrepreneur operating at the intersection of family legacy and institutional capital. As an equal shareholder in Demiroren Holding — a diversified family conglomerate founded in 1956 by Erdoğan Demirören in Istanbul and active across energy, media, real estate, tourism and technology — he carries forward a tradition built on patience, conviction, and the belief that enduring businesses are measured in generations, not cycles.
-          </p>
-          <p>
-            Demiroren Nordic Capital is the direct extension of that philosophy. Founded by Tayfun as a family investment platform, DNC deploys capital across real estate, insurance, infrastructure and hospitality, with operations anchored in Switzerland, the United Kingdom and Bermuda. The platform is built for permanence: structured to preserve, grow and transmit capital with the same long-horizon discipline that has defined the Demiroren name for nearly seven decades. His earlier work in European real estate, including Berlin-focused investment platforms initiated in the early 2020s, reflects the scale and selectivity that continues to define DNC's approach.
-          </p>
-          <p>
-            Tayfun is married with three children and is based in London.
-          </p>
+          <p>Tayfun Demiroren is a European investor and entrepreneur operating at the intersection of family legacy and institutional capital. As an equal shareholder in Demiroren Holding — a diversified family conglomerate founded in 1956 across energy, media, retail, and infrastructure — he carries forward a tradition built on patience, conviction, and the belief that enduring businesses are measured in generations, not cycles.</p>
+          <p>Demiroren Nordic Capital is the direct extension of that philosophy. Founded by Tayfun as a family investment platform, DNC deploys capital across real estate, insurance, infrastructure, and hospitality — with operations anchored in Switzerland, the United Kingdom, and Bermuda. The platform is built for permanence: structured to preserve, grow, and transmit capital with the same long-horizon discipline that has defined the Demiroren name for nearly seven decades. His earlier work in European real estate, including the initiation of Upside Berlin in 2020, reflects the scale and selectivity that continues to define DNC's approach.</p>
+          <p>Tayfun is married with three children and is based in London.</p>
         </section>
 
-        <section class="bio-section">
+        <section class="bio-section reveal reveal-delay-3">
           <h2>Reyhan Demiroren</h2>
           <img src="./IMG_1944.jpeg" alt="Reyhan Demiroren" class="bio-image">
-          <p>
-            Reyhan Demiroren is the daughter of the late Ayhan Bozkurt, founder and chairman of Bozkurt Holding — a Turkish business group with established operations across healthcare, insurance, and distribution. Her upbringing within a family defined by entrepreneurial discipline and long-horizon thinking gave her an early fluency in the language of business building that she carries forward today. She studied Project Management at Berkeley College, California.
-          </p>
-          <p>
-            Alongside her husband Tayfun, Reyhan plays an active role in the values and direction of Demiroren Nordic Capital — contributing to the family-first philosophy that underpins everything DNC builds. She is a mother of three and is based in London.
-          </p>
+          <p>Reyhan Demiroren is the daughter of the late Ayhan Bozkurt, founder and chairman of Bozkurt Holding — a Turkish business group with established operations across healthcare, insurance, and distribution. Her upbringing within a family defined by entrepreneurial discipline and long-horizon thinking gave her an early fluency in the language of business building that she carries forward today.</p>
+          <p>Alongside her husband Tayfun, Reyhan plays an active role in the values and direction of Demiroren Nordic Capital — contributing to the family-first philosophy that underpins everything DNC builds. She is a mother of three and is based in London.</p>
         </section>
 
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- ── CONTACT ── -->
   <section id="contact" class="contact">
     <div class="container">
-      <h2 class="section-title">Contact</h2>
-      <div class="contact-info">
-        <p class="contact-item">For investment, partnership, or media inquiries:</p>
-        <p class="contact-item"><a href="mailto:info@demiroren.nordic">info@demiroren.nordic</a></p>
+      <span class="eyebrow reveal">Get in Touch</span>
+      <h2 class="section-title reveal reveal-delay-1">Contact</h2>
+      <div class="contact-info reveal reveal-delay-2">
+        <p class="contact-item">For investment, partnership, or media enquiries:</p>
+        <p class="contact-item" style="margin-top:0.75rem;">
+          <a href="mailto:info@demirorennordiccapital.com">info@demirorennordiccapital.com</a>
+        </p>
       </div>
+      <p class="contact-note reveal reveal-delay-3">All enquiries are treated with strict confidentiality.</p>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- ── LEGAL DISCLAIMER ── -->
+  <div class="disclaimer">
+    <div class="disclaimer-inner">
+      <p><strong style="color:rgba(255,255,255,0.55);font-weight:400;">Important Notice.</strong> This website is for informational purposes only and does not constitute an offer, solicitation, or recommendation to buy or sell any security or investment product. Nothing contained herein should be construed as investment, legal, tax, or financial advice.</p>
+      <p>Demiroren Nordic Capital and its subsidiaries are private entities. References to investment activities, vehicles, and strategies on this website are provided for background purposes only and are not directed at any person in any jurisdiction where such distribution would be contrary to local law or regulation.</p>
+      <p>Past performance is not indicative of future results. All investments involve risk, including the possible loss of principal.</p>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-logo">
       <div class="logo-dot"></div>
-      <span class="logo-text">Demirøren Nordic Capital</span>
+      <span class="logo-text">Demiroren Nordic Capital</span>
     </div>
-    <p class="footer-text">© Demirøren Nordic Capital. All rights reserved.</p>
+    <p class="footer-text">&copy; 2025 Demiroren Nordic Capital. All rights reserved.</p>
   </footer>
+
+  <!-- ── SCROLL REVEAL ── -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
