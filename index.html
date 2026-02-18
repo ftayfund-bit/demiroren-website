@@ -635,43 +635,13 @@
       mobileMenu.classList.remove('open');
     }
 
-    // Password overlay
+    // TEMP: disable password overlay completely
     (function() {
-      const correctPassword = 'demiroren2026';
       const overlay = document.getElementById('passwordOverlay');
-      const form = document.getElementById('passwordForm');
-      const input = document.getElementById('passwordInput');
-      const error = document.getElementById('errorMessage');
-
-      // If already authenticated in this tab, hide overlay
-      if (sessionStorage.getItem('dnc_authenticated') === 'true') {
+      if (overlay) {
         overlay.style.display = 'none';
-        return;
       }
-
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (input.value === correctPassword) {
-          sessionStorage.setItem('dnc_authenticated', 'true');
-          overlay.style.transition = 'opacity 0.4s ease';
-          overlay.style.opacity = '0';
-          setTimeout(() => {
-            overlay.style.display = 'none';
-          }, 400);
-        } else {
-          error.style.display = 'block';
-          input.value = '';
-          input.focus();
-          setTimeout(() => {
-            error.style.display = 'none';
-          }, 3000);
-        }
-      });
-
-      // Focus input when page loads
-      input.focus();
-    })();
-  </script>
+    })();  </script>
 
   <!-- ── HERO ── -->
   <section class="hero">
